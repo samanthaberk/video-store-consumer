@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import axios from 'axios';
 import Library from './components/Library';
 import Search from './components/Search';
 import CustomerList from './components/CustomerList';
@@ -41,6 +42,25 @@ class App extends Component {
     });
   }
 
+  createNewRental = () => {
+    let dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + 7);
+    dueDate = `${dueDate.getFullYear()}-${String(dueDate.getMonth() + 1).padStart(2, "0")}-${String(dueDate.getDate()).padStart(2, "0")}`;
+
+    const NEW_RENTAL_URL = `http://localhost:3000/rentals/${this.state.movieTitle}/check-out`;
+    console.log(dueDate);
+    axios.post(NEW_RENTAL_URL, {
+      due_date: dueDate,
+      customer_id: this.state.customerId
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <Router>
@@ -51,6 +71,11 @@ class App extends Component {
 
           <p>Current Customer: {this.state.customerName}</p>
           <p>Current Movie: {this.state.movieTitle}</p>
+          <button
+            onClick={this.createNewRental}
+          >
+            Check Out
+          </button>
 
           <Route path="/search" component={Search}/>
           <Route
