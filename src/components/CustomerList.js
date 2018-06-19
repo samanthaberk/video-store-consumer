@@ -33,7 +33,7 @@ class CustomerList extends Component {
   render() {
     const customers = this.state.customers.map((customer) => {
       return (
-        <div>
+        <div key={customer.id}>
           <p>{customer.name} <button onClick={this.onCustomerSelect} name={customer.name} value={customer.id}>Select</button></p>
         </div>
       );
