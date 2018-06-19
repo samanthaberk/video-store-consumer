@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class CustomerList extends Component {
   constructor() {
@@ -7,6 +8,11 @@ class CustomerList extends Component {
     this.state = {
       customers: []
     }
+  }
+
+  onCustomerSelect = (event) => {
+    this.props.displayCurrentCustomerCallback(event.target.name);
+    this.props.updateCurrentCustomerCallback(event.target.value);
   }
 
   componentDidMount() {
@@ -26,7 +32,11 @@ class CustomerList extends Component {
 
   render() {
     const customers = this.state.customers.map((customer) => {
-      return (<p>{customer.name}</p>);
+      return (
+        <div>
+          <p>{customer.name} <button onClick={this.onCustomerSelect} name={customer.name} value={customer.id}>Select</button></p>
+        </div>
+      );
     });
     return (
       <div>
@@ -36,5 +46,10 @@ class CustomerList extends Component {
     );
   }
 }
+
+CustomerList.propTypes = {
+  updateCurrentCustomerCallback: PropTypes.func.isRequired,
+  displayCurrentCustomerCallback: PropTypes.func.isRequired
+};
 
 export default CustomerList;
