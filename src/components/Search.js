@@ -6,7 +6,14 @@ class Search extends Component {
     super();
     this.state = {
       searchTerm: "",
-      results: []
+      results: [],
+      selectedMovie: {
+        title: '',
+        overview: '',
+        release_date: '',
+        image_url: '',
+        external_id: 0
+      }
     }
   }
 
@@ -33,9 +40,38 @@ class Search extends Component {
     .catch();
   }
 
+  addToLibrary = (movie) => {
+    const NEW_MOVIE_URL = 'http://localhost:3000/movies';
+    axios.post(NEW_MOVIE_URL, movie)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch();
+  }
+
+  // addMovie = () => {
+  //   let movie = {
+  //
+  //   }
+  //   this.addToLibrary(movie);
+  // }
+
   render() {
     console.log(this.state.searchTerm);
     const results = this.state.results.map((movie) => {
+
+      const addMovie = () => {
+        const updatedMovie = {
+          title: movie.title,
+          overview: movie.overview,
+          release_date: movie.release_date,
+          image_url: movie.image_url,
+          external_id: movie.external_id
+        }
+        this.setState({selectedMovie: updatedMovie});
+        this.addToLibrary(this.state.selectedMovie);
+      }
+
       return(
         <div key={movie.external_id}>
           <p>
@@ -44,11 +80,13 @@ class Search extends Component {
             <button
               value={movie.external_id}
               name={movie.title}
+              onClick={addMovie}
             >Add Movie to Library</button>
           </p>
         </div>
       );
     });
+
     return (
       <section>
         <form onSubmit={this.onFormSubmit}>
