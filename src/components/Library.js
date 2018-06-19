@@ -9,6 +9,11 @@ class Library extends Component {
     }
   }
 
+  onMovieSelect = (event) => {
+    this.props.displayCurrentMovieCallback(event.target.name);
+    this.props.updateCurrentMovieCallback(event.target.value);
+  }
+
   componentDidMount() {
     const LIBRARY_URL = 'http://localhost:3000' + '/movies';
     axios.get(LIBRARY_URL)
@@ -34,6 +39,7 @@ class Library extends Component {
             <button
               value={movie.id}
               name={movie.title}
+              onClick={this.onMovieSelect}
             >Select Movie</button>
           </p>
         </div>

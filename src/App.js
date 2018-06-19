@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       customerName: "",
       customerId: 0,
-      currentMovie: null
+      movieTitle: "",
+      movieId: 0,
     }
   }
 
@@ -28,6 +29,18 @@ class App extends Component {
     });
   }
 
+  updateCurrentMovie = (id) => {
+    this.setState({
+      movieId: id
+    });
+  }
+
+  displayCurrentMovie = (title) => {
+    this.setState({
+      movieTitle: title
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -37,9 +50,15 @@ class App extends Component {
           <Link to="/customers">Customers </Link>
 
           <p>Current Customer: {this.state.customerName}</p>
+          <p>Current Movie: {this.state.movieTitle}</p>
 
           <Route path="/search" component={Search}/>
-          <Route path="/library" component={Library}/>
+          <Route
+            path="/library"
+            render={()=> <Library
+              updateCurrentMovieCallback={this.updateCurrentMovie}
+              displayCurrentMovieCallback={this.displayCurrentMovie}/>}
+          />
           <Route
             path="/customers"
             render={() => <CustomerList
