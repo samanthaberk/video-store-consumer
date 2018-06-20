@@ -16,17 +16,21 @@ class Library extends Component {
 
   componentDidMount() {
     const LIBRARY_URL = 'http://localhost:3000' + '/movies';
+    this.props.updateStatusCallback('loading movies...', 'success');
     axios.get(LIBRARY_URL)
       .then((response) => {
         let updatedMovies = []
         response.data.map((movie) => {
           updatedMovies.push(movie);
         });
+        this.props.updateStatusCallback(`${updatedMovies.length} movies successfully loaded`, 'success')
         this.setState({
           movies: updatedMovies
         });
       })
-      .catch();
+      .catch((error) => {
+        this.props.updateStatusCallback(`Something went wrong: ${error.message}`, 'error')
+      });
   }
 
   render() {

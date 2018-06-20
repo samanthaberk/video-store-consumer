@@ -100,7 +100,8 @@ class App extends Component {
             path="/library"
             render={()=> <Library
               updateCurrentMovieCallback={this.updateCurrentMovie}
-              displayCurrentMovieCallback={this.displayCurrentMovie}/>}
+              displayCurrentMovieCallback={this.displayCurrentMovie}
+              updateStatusCallback={this.updateStatus}/>}
           />
           <Route
             path="/customers"
