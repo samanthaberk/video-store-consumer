@@ -47,22 +47,32 @@ class App extends Component {
     });
   }
 
+  updateStatus = (message, type) => {
+    const updatedStatus = {
+      message: message,
+      type: type
+    };
+    this.setState({
+      status: updatedStatus
+    });
+  }
+
   createNewRental = () => {
+    this.updateStatus('Creating new rental', 'success');
     let dueDate = new Date();
     dueDate.setDate(dueDate.getDate() + 7);
     dueDate = `${dueDate.getFullYear()}-${String(dueDate.getMonth() + 1).padStart(2, "0")}-${String(dueDate.getDate()).padStart(2, "0")}`;
 
-    const NEW_RENTAL_URL = `http://localhost:3000/rentals/${this.state.movieTitle}/check-out`;
-    console.log(dueDate);
+    const NEW_RENTAL_URL = `http://localhost:3000/rentals/${this.state.movieTitle}/check-outt`;
     axios.post(NEW_RENTAL_URL, {
       due_date: dueDate,
       customer_id: this.state.customerId
     })
-      .then((response) => {
-        console.log(response);
+      .then(() => {
+        this.updateStatus(`Successfully rented ${this.state.movieTitle}`, 'success');
       })
       .catch((error) => {
-        console.log(error);
+        this.updateStatus(`Encountered an error when checking out ${this.state.movieTitle}: ${error.message}`, 'error');
       });
   }
 
