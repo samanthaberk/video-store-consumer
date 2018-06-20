@@ -4,6 +4,7 @@ import axios from 'axios';
 import Library from './components/Library';
 import Search from './components/Search';
 import CustomerList from './components/CustomerList';
+import Status from './components/Status';
 
 import './App.css';
 
@@ -15,6 +16,10 @@ class App extends Component {
       customerId: 0,
       movieTitle: "",
       movieId: 0,
+      status: {
+        message: "",
+        type: 'success'
+      }
     }
   }
 
@@ -76,6 +81,8 @@ class App extends Component {
           >
             Check Out
           </button>
+
+          <Status type={this.state.status.type} message={this.state.status.message}/>
 
           <Route path="/search" component={Search}/>
           <Route

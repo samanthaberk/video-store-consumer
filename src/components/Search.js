@@ -34,7 +34,7 @@ class Search extends Component {
   }
 
   addToLibrary = (movie) => {
-    const NEW_MOVIE_URL = 'http://localhost:3000/movies';
+    const NEW_MOVIE_URL = 'http://localhost:3000/moviess';
     let image = movie.image_url.split('w185');
     image = image[1];
 
@@ -49,15 +49,10 @@ class Search extends Component {
       .then((response) => {
         console.log(response);
       })
-      .catch();
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
-
-  // addMovie = () => {
-  //   let movie = {
-  //
-  //   }
-  //   this.addToLibrary(movie);
-  // }
 
   render() {
     console.log(this.state.searchTerm);
