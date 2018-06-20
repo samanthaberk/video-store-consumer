@@ -16,18 +16,21 @@ class CustomerList extends Component {
   }
 
   componentDidMount() {
+    this.props.updateStatusCallback('Loading customers...', 'success');
     const CUSTOMERS_URL = 'http://localhost:3000' + '/customers';
     axios.get(CUSTOMERS_URL)
       .then((response) => {
-        // console.log(response);
         let updatedCustomers = []; response.data.map((customer) => {
           updatedCustomers.push(customer);
         });
+        this.props.updateStatusCallback(`${updatedCustomers.length} customers successfully loaded`, 'success');
         this.setState({
           customers: updatedCustomers
         });
       })
-      .catch();
+      .catch((error) => {
+        this.props.updateStatusCallback(`Something went wrong: ${error.message}`, 'error');
+      });
   }
 
   render() {

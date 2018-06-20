@@ -107,7 +107,8 @@ class App extends Component {
             path="/customers"
             render={() => <CustomerList
             updateCurrentCustomerCallback={this.updateCurrentCustomer}
-            displayCurrentCustomerCallback={this.displayCurrentCustomer}/>}
+            displayCurrentCustomerCallback={this.displayCurrentCustomer}
+            updateStatusCallback={this.updateStatus}/>}
           />
         </div>
       </Router>
