@@ -18,6 +18,7 @@ class Search extends Component {
 
   onFormSubmit = (event) => {
     event.preventDefault();
+    this.props.updateStatusCallback('Searching for movies...', 'success');
     const SEARCH_URL = `http://localhost:3000/movies?query=${this.state.searchTerm}`;
     axios.get(SEARCH_URL)
     .then((response) => {
@@ -25,20 +26,29 @@ class Search extends Component {
       response.data.map((result) => {
         updatedResults.push(result)
       });
+
+      if(updatedResults.length === 0) {
+        this.props.updateStatusCallback('Sorry, no movies were found', 'success');
+      } else {
+        this.props.updateStatusCallback(`${updatedResults.length} movies were found`, 'success');
+      }
+
       this.setState({
         results: updatedResults,
         searchTerm: ""
       });
     })
-    .catch();
+    .catch((error) => {
+      this.props.updateStatusCallback(`Something went wrong: ${error.message}`, 'error');
+    });
   }
 
   addToLibrary = (movie) => {
-    const NEW_MOVIE_URL = 'http://localhost:3000/moviess';
+    this.props.updateStatusCallback(`Adding ${movie.title} to the library`, 'success');
+    const NEW_MOVIE_URL = 'http://localhost:3000/movies';
     let image = movie.image_url.split('w185');
     image = image[1];
 
-    console.log(movie);
     axios.post(NEW_MOVIE_URL, {
       title: movie.title,
       overview: movie.overview,
@@ -47,10 +57,10 @@ class Search extends Component {
       external_id: 2
     })
       .then((response) => {
-        console.log(response);
+        this.props.updateStatusCallback(`Successfully added ${movie.title} to the library`, 'success');
       })
       .catch((error) => {
-        console.log(error.message);
+        this.props.updateStatusCallback(`Something went wrong: ${error.message}`, 'error');
       });
   }
 
