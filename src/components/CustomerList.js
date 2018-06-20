@@ -52,7 +52,8 @@ class CustomerList extends Component {
 
 CustomerList.propTypes = {
   updateCurrentCustomerCallback: PropTypes.func.isRequired,
-  displayCurrentCustomerCallback: PropTypes.func.isRequired
+  displayCurrentCustomerCallback: PropTypes.func.isRequired,
+  updateStatusCallback: PropTypes.func.isRequired
 };
 
 export default CustomerList;
