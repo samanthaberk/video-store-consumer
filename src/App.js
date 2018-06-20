@@ -95,6 +95,7 @@ class App extends Component {
           <Status type={this.state.status.type} message={this.state.status.message}/>
 
           <Route path="/search" component={Search}/>
+          <h1> Like Netflix, but not as Convenient! </h1>
           <Route
             path="/library"
             render={()=> <Library
