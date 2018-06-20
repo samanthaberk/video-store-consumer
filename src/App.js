@@ -80,26 +80,28 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Link to="/search">Search </Link>
-          <Link to="/library">Library </Link>
-          <Link to="/customers">Customers </Link>
+          <header>
+            <Link to="/search" className='col-1'>Search </Link>
+            <Link to="/library" className='col-1'>Library </Link>
+            <Link to="/customers" className='col-1'>Customers </Link>
 
-          <p>Current Customer: {this.state.customerName}</p>
-          <p>Current Movie: {this.state.movieTitle}</p>
-          <button
-            onClick={this.createNewRental}
-          >
-            Check Out
-          </button>
-
+            <p className='col-1'>Current Customer: {this.state.customerName}</p>
+            <p className='col-1'>Current Movie: {this.state.movieTitle}</p>
+            <button
+              className='col-1'
+              onClick={this.createNewRental}
+            >
+              Check Out
+            </button>
+        </header>
           <Status type={this.state.status.type} message={this.state.status.message}/>
+            <h1> Like Netflix, but not as Convenient! </h1>
 
           <Route path="/search"
             render={()=> <Search
               updateStatusCallback={this.updateStatus}/>}
           />
 
-          <h1> Like Netflix, but not as Convenient! </h1>
 
           <Route
             path="/library"
