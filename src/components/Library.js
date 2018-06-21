@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 class Library extends Component {
@@ -56,6 +57,12 @@ class Library extends Component {
       </div>
     );
   }
+}
+
+Library.propTypes = {
+  updateCurrentMovieCallback: PropTypes.func.isRequired,
+  displayCurrentMovieCallback: PropTypes.func.isRequired,
+  updateStatusCallback: PropTypes.func.isRequired
 }
 
 export default Library;

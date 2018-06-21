@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 class Search extends Component {
@@ -56,7 +57,7 @@ class Search extends Component {
       image_url: image,
       external_id: 2
     })
-      .then((response) => {
+      .then(() => {
         this.props.updateStatusCallback(`Successfully added ${movie.title} to the library`, 'success');
       })
       .catch((error) => {
@@ -103,6 +104,10 @@ class Search extends Component {
       </section>
     );
   }
+}
+
+Search.propTypes = {
+  updateStatusCallback: PropTypes.func.isRequired
 }
 
 export default Search;
