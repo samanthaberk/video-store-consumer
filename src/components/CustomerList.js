@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+import NewCustomerForm from './NewCustomerForm';
+
 class CustomerList extends Component {
   constructor() {
     super();
     this.state = {
-      customers: []
+      customers: [],
+      displayNewCustomerForm: false
     }
   }
 
@@ -33,7 +36,21 @@ class CustomerList extends Component {
       });
   }
 
+  toggleNewCustomerForm = () => {
+    this.setState({
+      displayNewCustomerForm: !this.state.displayNewCustomerForm
+    });
+  }
+
   render() {
+    let form = null;
+    if (this.state.displayNewCustomerForm) {
+      form =
+      <section>
+        <NewCustomerForm />
+      </section>;
+    }
+
     const customers = this.state.customers.map((customer) => {
       return (
         <div key={customer.id}>
@@ -41,9 +58,12 @@ class CustomerList extends Component {
         </div>
       );
     });
+
     return (
       <div>
       <h1>CustomerList!</h1>
+      <button onClick={this.toggleNewCustomerForm}>Create New Customer</button>
+      {form}
       {customers}
       </div>
     );
