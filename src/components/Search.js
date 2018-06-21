@@ -94,7 +94,7 @@ class Search extends Component {
             type="text"
             value={this.state.searchTerm}
           />
-          <input type="submit" />
+        <input type="submit" value="Search by Title" />
         </form>
 
         <div className='result'>

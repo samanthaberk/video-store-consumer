@@ -81,7 +81,7 @@ class App extends Component {
       <Router>
         <div>
           <header>
-            <Link to="/search" className='col-1'>Search </Link>
+            <Search className='col-1' updateStatusCallback={this.updateStatus}/>
             <Link to="/library" className='col-1'>Library </Link>
             <Link to="/customers" className='col-1'>Customers </Link>
 
@@ -96,12 +96,6 @@ class App extends Component {
         </header>
           <Status type={this.state.status.type} message={this.state.status.message}/>
             <h1> Like Netflix, but not as Convenient! </h1>
-
-          <Route path="/search"
-            render={()=> <Search
-              updateStatusCallback={this.updateStatus}/>}
-          />
-
 
           <Route
             path="/library"

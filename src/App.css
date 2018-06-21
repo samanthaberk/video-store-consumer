@@ -29,6 +29,14 @@ button.col-1 {
   flex: none;
 }
 
+.search {
+  margin: .5em;
+  display: inline-block;
+  font-size: 1.25em;
+  cursor: pointer;
+  flex: none;
+}
+
 .col-1 {
   flex-grow: 1;
 }

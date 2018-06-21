@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './Status.css';
+
 const Status = (props) => {
     return(
       <p className={`status ${props.type}`}>{props.message}</p>
