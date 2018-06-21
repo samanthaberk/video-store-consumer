@@ -18,7 +18,7 @@ class App extends Component {
       movieId: 0,
       status: {
         message: "",
-        type: 'success'
+        type: ""
       }
     }
   }
@@ -63,7 +63,7 @@ class App extends Component {
     dueDate.setDate(dueDate.getDate() + 7);
     dueDate = `${dueDate.getFullYear()}-${String(dueDate.getMonth() + 1).padStart(2, "0")}-${String(dueDate.getDate()).padStart(2, "0")}`;
 
-    const NEW_RENTAL_URL = `http://localhost:3000/rentals/${this.state.movieTitle}/check-outt`;
+    const NEW_RENTAL_URL = `http://localhost:3000/rentals/${this.state.movieTitle}/check-out`;
     axios.post(NEW_RENTAL_URL, {
       due_date: dueDate,
       customer_id: this.state.customerId
@@ -81,9 +81,9 @@ class App extends Component {
       <Router>
         <div>
           <header>
-            <Search className='col-1' updateStatusCallback={this.updateStatus}/>
-            <Link to="/library" className='col-1'>Library </Link>
-            <Link to="/customers" className='col-1'>Customers </Link>
+            <Link to="/Search" className='col-1'>Search for Movies <i class="fa fa-search-plus"></i></Link>
+            <Link to="/library" className='col-1'>All Movies <i class="fa fa-file-movie-o"></i></Link>
+            <Link to="/customers" className='col-1'>Customers <i class="fa fa-group"></i></Link>
 
             <p className='col-1'>Current Customer: {this.state.customerName}</p>
             <p className='col-1'>Current Movie: {this.state.movieTitle}</p>
@@ -97,6 +97,11 @@ class App extends Component {
           <Status type={this.state.status.type} message={this.state.status.message}/>
             <h1> Like Netflix, but not as Convenient! </h1>
 
+        <Route
+          path="/search"
+          render={() => <Search
+            updateStatusCallback={this.updateStatus}/>}
+        />
           <Route
             path="/library"
             render={()=> <Library

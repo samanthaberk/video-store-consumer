@@ -1,0 +1,40 @@
+.customerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+  margin: 1em auto;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.customerContent {
+  width: 50%;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.customer {
+  font-size: 2em;
+  font-weight: bold;
+  display: inline-block;
+  width: 500px;
+  height: 100px;
+  line-height: 100px;
+  margin: 16px auto;
+  border: 1px solid black;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 0;
+  background-color: honeydew;
+}
+
+.selectCustomer {
+  font-size: 2em;
+  background-color: #222;
+  width: 534px;
+  color: white;
+  cursor: pointer;
+  margin: 0 auto;
+  border: none;
+}

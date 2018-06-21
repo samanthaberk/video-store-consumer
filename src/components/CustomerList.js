@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+import './CustomerList.css'
+
 class CustomerList extends Component {
   constructor() {
     super();
@@ -36,14 +38,14 @@ class CustomerList extends Component {
   render() {
     const customers = this.state.customers.map((customer) => {
       return (
-        <div key={customer.id}>
-          <p>{customer.name} <button onClick={this.onCustomerSelect} name={customer.name} value={customer.id}>Select</button></p>
+        <div key={customer.id} className="customerContent">
+          <p className="customer">{customer.name} </p>
+          <button className="selectCustomer" onClick={this.onCustomerSelect} name={customer.name} value={customer.id}>Select</button>
         </div>
       );
     });
     return (
-      <div>
-      <h1>CustomerList!</h1>
+      <div className='customerContainer'>
       {customers}
       </div>
     );

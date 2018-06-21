@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import './Library.css';
+
 class Library extends Component {
   constructor() {
     super();
@@ -38,21 +40,20 @@ class Library extends Component {
     const movies = this.state.movies.map((movie) => {
       return (
         <div key={movie.id}>
-          <p>
+          <div className="libraryContent">
             <img src={movie.image_url} />
-            {movie.title}
+            <p>{movie.title}</p>
             <button
               value={movie.id}
               name={movie.title}
               onClick={this.onMovieSelect}
             >Select Movie</button>
-          </p>
+        </div>
         </div>
       );
     });
     return (
-      <div>
-        <h1>Library!</h1>
+      <div className="libraryContainer">
         {movies}
       </div>
     );

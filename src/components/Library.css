@@ -1,0 +1,16 @@
+.libraryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+  margin: 1em auto;
+  justify-content: space-around;
+}
+
+.libraryContent {
+  width: 200px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  margin: 1em;
+}
