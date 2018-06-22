@@ -3,7 +3,6 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import NewCustomerForm from './NewCustomerForm';
-import EditCustomerForm from './EditCustomerForm';
 import './CustomerList.css'
 
 class CustomerList extends Component {
@@ -11,28 +10,13 @@ class CustomerList extends Component {
     super();
     this.state = {
       customers: [],
-      displayNewCustomerForm: false,
-      editCustomerId: 0,
-      name: '',
-      address: '',
-      city: '',
-      state: '',
-      postal_code: '',
-      phone: '',
-      account_credit: ''
+      displayNewCustomerForm: false
     }
   }
 
   onCustomerSelect = (event) => {
     this.props.displayCurrentCustomerCallback(event.target.name);
     this.props.updateCurrentCustomerCallback(event.target.value);
-  }
-
-  onCustomerEditSelect = (event) => {
-    this.setState({
-      editCustomerId: event.target.value
-    });
-    // console.log(event.target.value);
   }
 
   componentDidMount() {
@@ -60,7 +44,6 @@ class CustomerList extends Component {
   }
 
   render() {
-    console.log(this.state.editCustomerId);
 
     let newCustomerForm = null;
     if (this.state.displayNewCustomerForm) {
@@ -71,29 +54,12 @@ class CustomerList extends Component {
       </section>;
     }
 
-    let editCustomerForm = null;
-    if (this.state.editCustomerId !== 0) {
-      editCustomerForm =
-      <section>
-        <h3>Edit Customer!</h3>
-        <EditCustomerForm
-          customerId={this.state.editCustomerId}
-        />
-      </section>;
-    }
 
     const customers = this.state.customers.map((customer) => {
       return (
         <div key={customer.id} className="customerContent">
           <p className="customer">{customer.name} </p>
           <button className="selectCustomer" onClick={this.onCustomerSelect} name={customer.name} value={customer.id}>Select</button>
-          <button className="selectCustomer"
-            name={customer.name}
-            value={customer.id}
-            onClick={() => {
-              
-            }}
-          >Edit</button>
         </div>
       );
     });
@@ -103,7 +69,6 @@ class CustomerList extends Component {
         <h1>CustomerList!</h1>
         <button onClick={this.toggleNewCustomerForm}>Create New Customer</button>
         {newCustomerForm}
-        {editCustomerForm}
         {customers}
       </div>
     );
