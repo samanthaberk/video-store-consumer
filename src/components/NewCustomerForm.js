@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
+import './Search.css';
+import './NewCustomerForm.css';
+
 class NewCustomerForm extends React.Component {
   constructor() {
     super();
@@ -49,7 +52,7 @@ class NewCustomerForm extends React.Component {
       <form onSubmit={this.onNewCustomerFormSubmit}>
         <div>
           <label htmlFor="name">Name</label>
-          <input
+          <input className="searchInput"
             type="text"
             name="name"
             value={this.state.name}
@@ -58,7 +61,7 @@ class NewCustomerForm extends React.Component {
         </div>
         <div>
           <label htmlFor="address">Address</label>
-          <input
+          <input className="searchInput"
             type="text"
             name="address"
             value={this.state.address}
@@ -67,7 +70,7 @@ class NewCustomerForm extends React.Component {
         </div>
         <div>
           <label htmlFor="city">City</label>
-          <input
+          <input className="searchInput"
             type="text"
             name="city"
             value={this.state.city}
@@ -76,7 +79,7 @@ class NewCustomerForm extends React.Component {
         </div>
         <div>
           <label htmlFor="state">State</label>
-          <input
+          <input className="searchInput"
             type="text"
             name="state"
             value={this.state.state}
@@ -85,7 +88,7 @@ class NewCustomerForm extends React.Component {
         </div>
         <div>
           <label htmlFor="postal_code">Postal Code</label>
-          <input
+          <input className="searchInput"
             type="text"
             name="postal_code"
             value={this.state.postal_code}
@@ -94,7 +97,7 @@ class NewCustomerForm extends React.Component {
         </div>
         <div>
           <label htmlFor="phone">Phone</label>
-          <input
+          <input className="searchInput"
             type="text"
             name="phone"
             value={this.state.phone}
@@ -103,7 +106,7 @@ class NewCustomerForm extends React.Component {
         </div>
         <div>
           <label htmlFor="account_credit">Account Credit</label>
-          <input
+          <input className="searchInput"
             type="text"
             name="account_credit"
             value={this.state.account_credit}
@@ -111,7 +114,7 @@ class NewCustomerForm extends React.Component {
           />
         </div>
         <div>
-          <input type="submit" />
+          <input className="searchBtn" type="submit" />
         </div>
       </form>
     );

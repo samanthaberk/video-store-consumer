@@ -67,7 +67,7 @@ class CustomerList extends Component {
     return (
       <div className='customerContainer'>
         <h1>CustomerList!</h1>
-        <button onClick={this.toggleNewCustomerForm}>Create New Customer</button>
+        <button className="selectCustomer" onClick={this.toggleNewCustomerForm}>Create New Customer</button>
         {newCustomerForm}
         {customers}
       </div>

@@ -1,0 +1,20 @@
+form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 0; 
+}
+
+div {
+  text-align: center;
+}
+
+label {
+  display: inline-block;
+  width: 8em;
+  font-size: 1.5em;
+}
+
+input {
+  display: inline-block;
+  width: 20em;
+}
