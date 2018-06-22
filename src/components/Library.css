@@ -14,3 +14,26 @@
   align-items: space-around;
   margin: 1em;
 }
+
+.movieImage {
+  border: solid white 4px;
+  box-shadow: 5px 10px gainsboro;
+}
+
+.movieImage:hover {
+  transition: .5s ease-in-out;
+  transform: scale(1.1);
+}
+
+.movieTitle {
+  padding-top: 1.5em;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.selectMovie {
+  padding-bottom: 1.5em;
+  font-size: 1.25em;
+  cursor: pointer;
+}

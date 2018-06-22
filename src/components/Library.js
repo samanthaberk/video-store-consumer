@@ -41,9 +41,10 @@ class Library extends Component {
       return (
         <div key={movie.id}>
           <div className="libraryContent">
-            <img src={movie.image_url} />
-            <p>{movie.title}</p>
+            <img className="movieImage" src={movie.image_url} />
+            <p className="movieTitle">{movie.title}</p>
             <button
+              className="selectMovie"
               value={movie.id}
               name={movie.title}
               onClick={this.onMovieSelect}

@@ -24,6 +24,7 @@ header p {
 
 header a {
   color: #fff;
+  font-size: 1.25em;
 }
 
 button.col-1 {
@@ -44,4 +45,11 @@ button.col-1 {
 
 .col-1 {
   flex-grow: 1;
+}
+
+.tagline {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000000;
 }

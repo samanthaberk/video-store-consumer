@@ -95,7 +95,7 @@ class App extends Component {
             </button>
         </header>
           <Status type={this.state.status.type} message={this.state.status.message}/>
-            <h1> Like Netflix, but not as Convenient! </h1>
+            <h1 className="tagline"> Like Netflix, but not as Convenient! </h1>
 
         <Route
           path="/search"

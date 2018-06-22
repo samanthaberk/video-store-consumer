@@ -72,10 +72,12 @@ class Search extends Component {
     const results = this.state.results.map((movie) => {
       return(
         <div key={movie.external_id}>
+          <div className="libraryContent">
           <p>
-            <img src={movie.image_url} />
-            {movie.title}
+            <img className="movieImage" src={movie.image_url} />
+              <p className="movieTitle">{movie.title}</p>
             <button
+              className="selectMovie"
               value={movie.external_id}
               name={movie.title}
               onClick={() => {
@@ -84,6 +86,7 @@ class Search extends Component {
               }
             >Add Movie to Library</button>
           </p>
+          </div>
         </div>
       );
     });
@@ -92,14 +95,15 @@ class Search extends Component {
       <section>
         <form onSubmit={this.onFormSubmit}>
           <input
+            className="searchInput"
             onChange={this.onInputChange}
             type="text"
             value={this.state.searchTerm}
           />
-        <input type="submit" value="Search by Title" />
+        <input className="searchBtn" type="submit" value="Search by Title" />
         </form>
 
-        <div className='result'>
+        <div className="libraryContainer">
           {results}
         </div>
 
