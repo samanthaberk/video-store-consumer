@@ -19,6 +19,10 @@ class CustomerList extends Component {
     this.props.updateCurrentCustomerCallback(event.target.value);
   }
 
+  onCustomerEditSelect = (event) => {
+
+  }
+
   componentDidMount() {
     this.props.updateStatusCallback('Loading customers...', 'success');
     const CUSTOMERS_URL = 'http://localhost:3000' + '/customers';
@@ -57,6 +61,7 @@ class CustomerList extends Component {
         <div key={customer.id} className="customerContent">
           <p className="customer">{customer.name} </p>
           <button className="selectCustomer" onClick={this.onCustomerSelect} name={customer.name} value={customer.id}>Select</button>
+          <button className="selectCustomer" onClick={this.onCustomerEditSelect} name={customer.name} value={customer.id}>Edit</button>
         </div>
       );
     });
