@@ -20,11 +20,6 @@
   box-shadow: 5px 10px gainsboro;
 }
 
-.movieImage:hover {
-  transition: .5s ease-in-out;
-  transform: scale(1.1);
-}
-
 .movieTitle {
   padding-top: 1.5em;
   text-align: center;
@@ -36,4 +31,31 @@
   padding-bottom: 1.5em;
   font-size: 1.25em;
   cursor: pointer;
+}
+
+.movieImageContainer {
+  position: relative;
+  text-align: center;
+}
+
+.movieDescription {
+  opacity: 0;
+  position: absolute;
+  font-size: 1.1em;
+  padding: .2em;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+.movieDescription:hover {
+  opacity: 1;
+  background-color: rgba(240, 255, 240, 0.8);
+  overflow: scroll;
+  color: darkslategrey;
 }

@@ -41,7 +41,10 @@ class Library extends Component {
       return (
         <div key={movie.id}>
           <div className="libraryContent">
-            <img className="movieImage" src={movie.image_url} />
+            <div className="movieImageContainer">
+              <img className="movieImage" src={movie.image_url} />
+              <div className="movieDescription">{movie.overview}</div>
+            </div>
             <p className="movieTitle">{movie.title}</p>
             <button
               className="selectMovie"
@@ -49,7 +52,7 @@ class Library extends Component {
               name={movie.title}
               onClick={this.onMovieSelect}
             >Select Movie</button>
-        </div>
+          </div>
         </div>
       );
     });
