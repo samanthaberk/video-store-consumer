@@ -9,9 +9,9 @@ class NewCustomerForm extends React.Component {
       address: '',
       city: '',
       state: '',
-      postalCode: '',
+      postal_code: '',
       phone: '',
-      accountCredit: ''
+      account_credit: ''
     }
   }
 
@@ -32,6 +32,15 @@ class NewCustomerForm extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+      });
+      this.setState({
+        name: '',
+        address: '',
+        city: '',
+        state: '',
+        postal_code: '',
+        phone: '',
+        account_credit: ''
       });
   }
 
@@ -75,11 +84,11 @@ class NewCustomerForm extends React.Component {
           />
         </div>
         <div>
-          <label htmlFor="postalCode">Postal Code</label>
+          <label htmlFor="postal_code">Postal Code</label>
           <input
             type="text"
-            name="postalCode"
-            value={this.state.postalCode}
+            name="postal_code"
+            value={this.state.postal_code}
             onChange={this.onInputChange}
           />
         </div>
@@ -93,11 +102,11 @@ class NewCustomerForm extends React.Component {
           />
         </div>
         <div>
-          <label htmlFor="accountCredit">Account Credit</label>
+          <label htmlFor="account_credit">Account Credit</label>
           <input
             type="text"
-            name="accountCredit"
-            value={this.state.accountCredit}
+            name="account_credit"
+            value={this.state.account_credit}
             onChange={this.onInputChange}
           />
         </div>
