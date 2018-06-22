@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import NewCustomerForm from './NewCustomerForm';
+import EditCustomerForm from './EditCustomerForm';
 import './CustomerList.css'
 
 class CustomerList extends Component {
@@ -10,7 +11,8 @@ class CustomerList extends Component {
     super();
     this.state = {
       customers: [],
-      displayNewCustomerForm: false
+      displayNewCustomerForm: false,
+      editCustomerId: 0
     }
   }
 
@@ -20,7 +22,10 @@ class CustomerList extends Component {
   }
 
   onCustomerEditSelect = (event) => {
-
+    this.setState({
+      editCustomerId: event.target.value
+    });
+    // console.log(event.target.value);
   }
 
   componentDidMount() {
@@ -48,11 +53,23 @@ class CustomerList extends Component {
   }
 
   render() {
-    let form = null;
+    console.log(this.state.editCustomerId);
+
+    let newCustomerForm = null;
     if (this.state.displayNewCustomerForm) {
-      form =
+      newCustomerForm =
       <section>
+        <h3>New Customer!</h3>
         <NewCustomerForm />
+      </section>;
+    }
+
+    let editCustomerForm = null;
+    if (this.state.editCustomerId !== 0) {
+      editCustomerForm =
+      <section>
+        <h3>Edit Customer!</h3>
+        <EditCustomerForm customerId={this.state.editCustomerId} />
       </section>;
     }
 
@@ -70,7 +87,8 @@ class CustomerList extends Component {
       <div className='customerContainer'>
         <h1>CustomerList!</h1>
         <button onClick={this.toggleNewCustomerForm}>Create New Customer</button>
-        {form}
+        {newCustomerForm}
+        {editCustomerForm}
         {customers}
       </div>
     );

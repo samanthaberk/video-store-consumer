@@ -26,7 +26,7 @@ class EditCustomerForm extends React.Component {
     const EDIT_CUSTOMER_URL = `http://localhost:3000/customers/`;
     const newCustomer = this.state;
     console.log(typeof newCustomer.accountCredit);
-    axios.post(NEW_CUSTOMER_URL, this.state)
+    axios.post(EDIT_CUSTOMER_URL, this.state)
       .then((response) => {
         console.log(response);
       })
@@ -45,6 +45,7 @@ class EditCustomerForm extends React.Component {
   }
 
   render () {
+    console.log(this.props.customerId);
     return (
       <form onSubmit={this.onEditCustomerFormSubmit}>
         <div>
