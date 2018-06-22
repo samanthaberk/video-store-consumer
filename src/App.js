@@ -81,9 +81,9 @@ class App extends Component {
       <Router>
         <div>
           <header>
-            <Link to="/Search" className='col-1'>Search for Movies <i class="fa fa-search-plus"></i></Link>
-            <Link to="/library" className='col-1'>All Movies <i class="fa fa-file-movie-o"></i></Link>
-            <Link to="/customers" className='col-1'>Customers <i class="fa fa-group"></i></Link>
+            <Link to="/Search" className='col-1'>Search for Movies <i className="fa fa-search-plus"></i></Link>
+            <Link to="/library" className='col-1'>All Movies <i className="fa fa-file-movie-o"></i></Link>
+            <Link to="/customers" className='col-1'>Customers <i className="fa fa-group"></i></Link>
 
             <p className='col-1'>Current Customer: {this.state.customerName}</p>
             <p className='col-1'>Current Movie: {this.state.movieTitle}</p>
