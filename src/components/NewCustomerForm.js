@@ -33,6 +33,15 @@ class NewCustomerForm extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+      this.setState({
+        name: '',
+        address: '',
+        city: '',
+        state: '',
+        postal_code: '',
+        phone: '',
+        account_credit: ''
+      });
   }
 
   render () {
