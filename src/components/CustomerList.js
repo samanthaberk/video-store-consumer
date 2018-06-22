@@ -12,7 +12,14 @@ class CustomerList extends Component {
     this.state = {
       customers: [],
       displayNewCustomerForm: false,
-      editCustomerId: 0
+      editCustomerId: 0,
+      name: '',
+      address: '',
+      city: '',
+      state: '',
+      postal_code: '',
+      phone: '',
+      account_credit: ''
     }
   }
 
@@ -69,7 +76,9 @@ class CustomerList extends Component {
       editCustomerForm =
       <section>
         <h3>Edit Customer!</h3>
-        <EditCustomerForm customerId={this.state.editCustomerId} />
+        <EditCustomerForm
+          customerId={this.state.editCustomerId}
+        />
       </section>;
     }
 
@@ -78,7 +87,13 @@ class CustomerList extends Component {
         <div key={customer.id} className="customerContent">
           <p className="customer">{customer.name} </p>
           <button className="selectCustomer" onClick={this.onCustomerSelect} name={customer.name} value={customer.id}>Select</button>
-          <button className="selectCustomer" onClick={this.onCustomerEditSelect} name={customer.name} value={customer.id}>Edit</button>
+          <button className="selectCustomer"
+            name={customer.name}
+            value={customer.id}
+            onClick={() => {
+              
+            }}
+          >Edit</button>
         </div>
       );
     });
